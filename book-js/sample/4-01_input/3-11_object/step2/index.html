@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>テンプレート</title>
+<title>3-11_object</title>
 <link href="../../_common/images/favicon.ico" rel="shortcut icon">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
 <link href="../../_common/css/style.css" rel="stylesheet">
@@ -11,8 +11,8 @@
 <body>
 <header>
 <div class="container">
-<h1>タイトル</h1>
-<h2>サブタイトル</h2>
+<h1>アイテムの価格と在庫を表示する</h1>
+<h2>すべてのプロパティを読み取る</h2>
 </div><!-- /.container -->
 </header>
 <main>
@@ -28,29 +28,13 @@
 </div><!-- /.container -->
 </footer>
 <script>
-  'use strict';
+'use strict';
 
-  function fizzbuzz(num) {
-    if(num % 3 === 0 && num % 5 === 0) {
-    return 'fizzbuzz';
-  } else if(num % 3 === 0) {
-    return 'fizz';
-  } else if(num % 5 === 0) {
-    return 'buzz' ;
-  } else {
-    return num;
-  }
+let jsbook = {title:'JavaScript入門', price:2500, stock:3};
+
+for(let p in jsbook) {
+    console.log(p + '=' + jsbook[p]);
 }
-
-let i = 1;
-while(i <= 30) {;
-  console.log(fizzbuzz(i));
-  i += 1;
-}
-
-
-
-
 </script>
 </body>
 </html>

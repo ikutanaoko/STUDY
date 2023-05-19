@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>テンプレート</title>
+<title>2-04_html</title>
 <link href="../../_common/images/favicon.ico" rel="shortcut icon">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
 <link href="../../_common/css/style.css" rel="stylesheet">
@@ -11,14 +11,14 @@
 <body>
 <header>
 <div class="container">
-<h1>タイトル</h1>
-<h2>サブタイトル</h2>
+<h1>HTMLを書き換える</h1>
+<h2>取得した要素のコンテンツを書き換える</h2>
 </div><!-- /.container -->
 </header>
 <main>
 <div class="container">
 <section>
-
+    <p id="choice">ここに日時を表示します</p>
 </section>
 </div><!-- /.container -->
 </main>
@@ -28,29 +28,8 @@
 </div><!-- /.container -->
 </footer>
 <script>
-  'use strict';
-
-  function fizzbuzz(num) {
-    if(num % 3 === 0 && num % 5 === 0) {
-    return 'fizzbuzz';
-  } else if(num % 3 === 0) {
-    return 'fizz';
-  } else if(num % 5 === 0) {
-    return 'buzz' ;
-  } else {
-    return num;
-  }
-}
-
-let i = 1;
-while(i <= 30) {;
-  console.log(fizzbuzz(i));
-  i += 1;
-}
-
-
-
-
+'use strict';
+document.getElementById('choice').textContent = new Date();
 </script>
 </body>
 </html>

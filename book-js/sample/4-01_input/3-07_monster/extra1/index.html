@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>テンプレート</title>
+<title>3-07_monster</title>
 <link href="../../_common/images/favicon.ico" rel="shortcut icon">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
 <link href="../../_common/css/style.css" rel="stylesheet">
@@ -11,14 +11,14 @@
 <body>
 <header>
 <div class="container">
-<h1>タイトル</h1>
-<h2>サブタイトル</h2>
+<h1>コンソールでモンスターを倒せ！</h1>
+<h2>変数・定数の有効範囲1</h2>
 </div><!-- /.container -->
 </header>
 <main>
 <div class="container">
 <section>
-
+    <p>戦闘の状況はコンソールでチェック！</p>
 </section>
 </div><!-- /.container -->
 </main>
@@ -28,29 +28,17 @@
 </div><!-- /.container -->
 </footer>
 <script>
-  'use strict';
+'use strict';
 
-  function fizzbuzz(num) {
-    if(num % 3 === 0 && num % 5 === 0) {
-    return 'fizzbuzz';
-  } else if(num % 3 === 0) {
-    return 'fizz';
-  } else if(num % 5 === 0) {
-    return 'buzz' ;
-  } else {
-    return num;
-  }
+let enemy = 100;
+
+window.alert('戦闘スタート！');
+while(enemy > 0) {
+    const attack = Math.floor(Math.random() * 30) + 1;
+    console.log('モンスターに' + attack + 'のダメージ！');
+    enemy -= attack;
 }
-
-let i = 1;
-while(i <= 30) {;
-  console.log(fizzbuzz(i));
-  i += 1;
-}
-
-
-
-
+console.log(attack);
 </script>
 </body>
 </html>
