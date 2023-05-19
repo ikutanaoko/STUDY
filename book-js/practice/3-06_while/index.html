@@ -29,19 +29,12 @@
 </footer>
 <script>
   'use strict'
-  const answer = window.prompt('ヘルプを見ますか？');
-  console.log(answer);
-  if (answer === "yes") {
-    window.alert("タップでジャンプ！障害をよけます。");
-  } else if(answer === 'no') {
-    window.alert("ゲーム起動中…");
-  } else {
-    window.alert("yesかnoでお答えください。");
+
+  let i = 1;
+  while(i <= 10) {
+    console.log(i + "回");
+    i += 1;
   }
-
-
-
-
 </script>
 </body>
 </html>
