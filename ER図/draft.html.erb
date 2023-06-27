@@ -1,0 +1,96 @@
+ <%#　itemマイグレーションファイル　%>
+ 
+ t.integer :genre_id, null: false
+ t.string :name, null: false
+ t.text :introduction, null: false
+ t.integer :price, null: false
+ t.boolean :is_availabled, null: false, default: true
+
+ <%#　itemモデルファイル　%>
+ numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
+                  format: { with: /\A[0-9]+\z/ }
+
+<%#　item登録画面　%>
+<h3>商品新規登録</h3>
+
+<% form_with model:@item, local:true do |f| %>
+<div class="form-group">
+<%= f.label :image, '商品画像' %>
+<%= f.file_field :item_image, class: "form-control-file", accept: 'image/*' %>
+</div>
+
+<div class="form-group">
+<%= f.label :name, '商品名' %>
+<%= f.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+<%= f.label :name, '商品名' %>
+<%= f.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+<%= f.label :introduction, '商品説明' %>
+<%= f.text_area :introduction, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+<%= f.label :genre_id, 'ジャンル' %>
+<%= f.select :genre_id, [['ケーキ', 1], ['プリン', 2], ['焼き菓子', 2], ['キャンディ', 4]], { include_blank: "--選択してください--"}, {class: 'form-control'} %>
+</div>
+
+<div class="form-group">
+<%= f.label :price, '販売価格' %>
+<%= f.text_field :price, class: 'form-control', placeholder: "1000" %>円
+</div>
+
+<div class="form-group">
+<%= f.label :is_availabled, '販売ステータス' %>
+  <%= f.radio_button :is_availabled, true, class: 'form-control' %>
+  <%= f.label :is_availabled, '販売中', value: true %>
+  <%= f.radio_button :is_availabled, false, class: 'form-control' %>
+  <%= f.label :is_availabled, '販売中', value: false %>
+</div>
+
+ <%#　seedsファイル　%>
+
+
+Item.create!(
+[
+  {
+    name: 'ショートケーキ',
+    genre_id: '1',
+    introduction: 'テストのケーキです。',
+    price: '500',
+    is_availabled: 'true',
+    profile_image: File.open("./app/assets/images/smile.jpg")
+  }
+]
+)
+
+ItemGenre.create!(
+[
+  {
+    name: 'ケーキ',
+  },
+  {
+    name: 'プリン',
+  },
+  {
+    name: '焼き菓子',
+  },
+  {
+    name: 'キャンディ',
+  },
+]
+)
+
+
+
+  validates :genre_id, presence: true
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
+  validates :is_availabled, presence: true,
+            numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
+              format: { with: /\A[0-9]+\z/ }
