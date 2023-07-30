@@ -94,3 +94,26 @@ ItemGenre.create!(
   validates :is_availabled, presence: true,
             numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
               format: { with: /\A[0-9]+\z/ }
+
+  {
+  const parentMenuItem = document.querySelectorAll('.navbar-item');
+  console.log(parentMenuItem);
+  for (let i = 0; i < parentMenuItem.length; i++) {
+    parentMenuItem[i].addEventListener('mouseover', dropDownMenuOpen);
+    parentMenuItem[i].addEventListener('mouseleave', dropDownMenuClose);
+  }
+  function dropDownMenuOpen(e) {
+    const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu-link');
+    console.log(childMenuLink);
+    for (let i = 0; i < childMenuLink.length; i++) {
+      childMenuLink[i].classList.add('is-active');
+    }
+  }
+  function dropDownMenuClose(e) {
+    const childMenuLink = e.currentTarget.querySelectorAll('.drop-menu-link');
+    console.log(childMenuLink);
+    for (let i = 0; i < childMenuLink.length; i++) {
+      childMenuLink[i].classList.remove('is-active');
+    }
+  }
+}
