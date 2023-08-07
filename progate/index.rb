@@ -41,7 +41,21 @@
 # name = "佐藤"
 # puts "こんにちは#{name}さん"
 
-age = 19
-puts "#{age}歳です"
+# age = 19
+# puts "#{age}歳です"
 
+# score = 38
+# if score > 80
+#   puts "よくできました"
+# end
 
+# score = 38
+# if score > 80
+#   puts "よくできました"
+# end
+
+score = 99
+puts score < 50
+puts score <= 99
+puts score > 99
+puts score >= 120
