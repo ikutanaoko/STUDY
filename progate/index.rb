@@ -54,7 +54,7 @@
 #   puts "よくできました"
 # end
 
-score = 99
+score = 103
 puts score < 50
 puts score <= 99
 puts score > 99
