@@ -59,3 +59,7 @@
 # puts score <= 99
 # puts score > 99
 # puts score >= 120
+
+score = 70
+puts score == 100
+puts score != 80
