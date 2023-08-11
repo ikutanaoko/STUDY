@@ -63,3 +63,7 @@
 score = 70
 puts score == 100
 puts score != 80
+
+score = 60
+puts score == 100
+puts score != 80
