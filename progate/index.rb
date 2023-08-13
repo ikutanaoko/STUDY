@@ -64,6 +64,13 @@
 # puts score == 100
 # puts score != 80
 
-score = 60
-puts score == 100
-puts score != 80
+# score = 60
+# puts score == 100
+# puts score != 80
+
+score = 80
+if score == 100
+  puts "満点です"
+else
+  puts "満点ではありません"  
+end
