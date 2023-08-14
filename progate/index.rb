@@ -68,9 +68,23 @@
 # puts score == 100
 # puts score != 80
 
-score = 80
-if score == 100
-  puts "満点です"
-else
-  puts "満点ではありません"  
+# score = 80
+# if score == 100
+#   puts "満点です"
+# else
+#   puts "満点ではありません"  
+# end
+
+# score = 77
+# if score > 80
+#   puts "よくできました"
+# elsif score > 60
+#   puts "まずまずです"
+# else
+#   puts "がんばりましょう"  
+# end
+
+score = 68
+if score < 80 && score > 60
+ puts "まずまずです"
 end
