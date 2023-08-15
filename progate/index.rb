@@ -84,7 +84,7 @@
 #   puts "がんばりましょう"  
 # end
 
-score = 68
-if score < 80 && score > 60
- puts "まずまずです"
-end
+# score = 68
+# if score < 80 && score > 60
+#  puts "まずまずです"
+# end
