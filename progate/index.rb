@@ -88,3 +88,4 @@
 # if score < 80 && score > 60
 #  puts "まずまずです"
 # end
+
