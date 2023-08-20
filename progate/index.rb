@@ -89,7 +89,7 @@
 #  puts "まずまずです"
 # end
 
-number = 60
+number =45 
 
 if (number % 5 == 0) && (number % 3 == 0)
   puts "15の倍数です"
