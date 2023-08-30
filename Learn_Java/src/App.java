@@ -6,5 +6,6 @@ public class App {
         System.out.println(3 * 2);
         System.out.println(6 / 2);
         System.out.println(8 % 5);
+        System.out.println("8" + "5");
     }
 }
