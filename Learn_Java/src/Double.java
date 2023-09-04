@@ -1,6 +1,7 @@
 public class Double {
     public static void main(String[] args) throws Exception {
-      double number = 5.28;
-      System.out.println(number);
+      double number1 = 5.28;
+      double number2 = 3.72;
+      System.out.println(number1 + number2);
     }
 }
