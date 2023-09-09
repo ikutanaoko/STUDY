@@ -7,5 +7,6 @@ public class Primitive {
     System.out.println(longValue);
     System.out.println(intValue);
     System.out.println(shortValue);
+    
   }
 }
