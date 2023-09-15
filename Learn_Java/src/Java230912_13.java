@@ -24,10 +24,10 @@ public class Java230912_13 {
         // }
 
         // [do while]
-        int i = 0;
-        do {
-            System.out.println(i);
-            i++;
-        }while (i < 10);
+    //     int i = 0;
+    //     do {
+    //         System.out.println(i);
+    //         i++;
+    //     }while (i < 10);0
     }
 }
