@@ -37,4 +37,5 @@ public class Java230912_13 {
             i++;
         }while (i < 10);
         
+        
 }
