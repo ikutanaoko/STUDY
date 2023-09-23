@@ -11,6 +11,9 @@ public class Java230922_23 {
         case 3:
             System.out.println("n is three.");
             break;
+        case 4:
+            System.out.println("n is four.");
+            break;
         default:
             System.out.println("unknown");
             break;
