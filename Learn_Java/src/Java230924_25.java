@@ -20,7 +20,7 @@ public class Java230924_25 {
                     System.out.println("a is" + a);
                     System.out.println("j is" +j);
                 }
-                System.out.println("finish!");
+                System.out.println("contenue!");
             }
 
         }
