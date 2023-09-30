@@ -5,5 +5,6 @@ public class Practice {
     // System.out.println(number);
     System.out.println("Docker構築");
     
+    
 }
 }
