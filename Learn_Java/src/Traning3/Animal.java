@@ -11,16 +11,12 @@ public class Animal {
 
   public static void main(String[]args){
    //インスタンスを作成
-   Dog dog1 = new Dog();
-   dog1.setSetName("ポチ");
-   dog1.setCryCount(2);
-
-   Dog dog2 = new Dog();
-   dog2.setSetName("クロ");
-   dog2.setCryCount(5);
+   Dog dog1 = new Dog("ポチ");
+   Dog dog2 = new Dog("クロ",5);
 
    Cat cat1 = new Cat();
-   cat1.setCryCount(3);
+   Cat cat2 = new Cat("タマ");
+   Cat cat3 = new Cat("ミケ",4);
 
    //犬のインスタンスメソッドを実行
    dog1.cry();
@@ -29,6 +25,8 @@ public class Animal {
 
    //猫のインスタンスメソッドを実行
    cat1.cry();
+   cat2.cry();
+   cat3.cry();
 
 
   }

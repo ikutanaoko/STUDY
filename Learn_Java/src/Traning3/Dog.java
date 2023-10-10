@@ -5,13 +5,25 @@ package Traning3;
 public class Dog {
 
   //名前
-  private String setName = "名無しの犬";
+  private String name = "名無しの犬";
   //鳴く回数
   private int cryCount = 1;
 
+
+  //コンストラクタ @param name 名前
+  // public Dog(String name) {
+  //   this.name = name;
+  // } 
+
+  //コンストラクタ @param name 名前 @param cryCount 鳴く回数
+  public Dog(String name, int cryCount) {
+    this.name = name;
+    this.cryCount = cryCount;
+  }
+
 //名前の設定　@param name 名前
   public void setSetName(String name) {
-    this.setName = name;
+    this.name = name;
   }
 
   //鳴く回数を設定 @param cryCount 鳴く回数
@@ -24,7 +36,7 @@ public class Dog {
   *インスタンス変数は自身のクラスのインスタンス変数をthis.～で利用できる
   */
   public void cry(){
-    System.out.print(this.setName + "「");
+    System.out.print(this.name + "「");
     for(int i = 0; i < this.cryCount; i ++) {
  
      System.out.print("ワン");
@@ -37,7 +49,7 @@ public class Dog {
    * お座りします
    */
   public void sitDown() {
-    System.out.println(this.setName + "は座りました");
+    System.out.println(this.name + "は座りました");
   }
  
 }

@@ -9,6 +9,22 @@ package Traning3;
   //鳴く回数
   private int cryCount = 1;
 
+  //コンストラクタ
+  public Cat() {
+    ;
+  }
+  //コンストラクタ @param name 名前
+  public Cat(String name) {
+    this.name = name;
+  } 
+
+  //コンストラクタ @param name 名前 @param cryCount 鳴く回数
+  public Cat(String name, int cryCount) {
+    this.name = name;
+    this.cryCount = cryCount;
+  }
+
+
   //名前の設定　@param name 名前
   public void setName(String name) {
     this.name = name;
