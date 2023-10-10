@@ -1,23 +1,23 @@
-package Traning3;
+package Traning4;
 /**
  * 犬を表すクラスです。
  */
 public class Dog {
 
   //名前
-  private String name = "名無しの犬";
+  private String name;
   //鳴く回数
-  private int cryCount = 1;
+  private int cryCount;
 
 
   //コンストラクタ @param name 名前
   public Dog(String name) {
-    this.name = name;
+    this(name,1);
   } 
 
   //コンストラクタ @param name 名前 @param cryCount 鳴く回数
   public Dog(String name, int cryCount) {
-    this.name = name;
+    this.setName(name);
     this.cryCount = cryCount;
   }
 
