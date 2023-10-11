@@ -18,4 +18,6 @@ public class Player {
         System.out.print(name + ", how many stones do you want to remove? ");
         return scanner.nextInt();
     }
+
+
 }
