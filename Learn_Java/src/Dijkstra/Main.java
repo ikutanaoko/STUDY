@@ -50,13 +50,36 @@ public class Main {
 
     System.out.println(vertexMap.get(0).confirmed);
 
-    // スタート地点を決める
+    // スタート地点を決める 今回は2をスタートにする
     Vertex start = vertexMap.get(2);
 
     start.shortestCost = 0;
     start.confirmed = true;
 
     System.out.println(start.confirmed); // スタート地点のコストが0で確定されたか確認
+
+    
+    // 現在地の情報をcurrentVertexに格納
+    Vertex currentVertex = start;
+    int currentCost = 0;
+
+    for (Node node : nodeList) {
+      if (node.startingPoint == start) {
+
+        if (node.endingPoint.confirmed = false) {
+          currentCost += node.cost;
+          if (node.endingPoint.shortestCost == Integer.MAX_VALUE) {
+            node.endingPoint.shortestCost = currentCost; 
+
+          } else {
+            
+
+        }
+      }
+    }
+
+
+    
 
 
 
