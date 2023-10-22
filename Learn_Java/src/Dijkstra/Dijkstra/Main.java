@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Main {
   public static void main(String[]args) {
@@ -48,15 +49,19 @@ public class Main {
 
     }
 
-    System.out.println(vertexMap.get(0).confirmed);
+        System.out.println("地点0は現時点で" + vertexMap.get(0).confirmed);
+
 
     // スタート地点を決める 今回は2をスタートにする
+    
     Vertex start = vertexMap.get(2);
 
     start.shortestCost = 0;
     start.confirmed = true;
 
     System.out.println(start.confirmed); // スタート地点のコストが0で確定されたか確認
+        System.out.println("地点0は現時点で" + vertexMap.get(0).confirmed);
+
 
     
     // 現在地の情報をcurrentVertexに格納
@@ -72,19 +77,42 @@ public class Main {
             node.endingPoint.shortestCost = currentCost; 
 
           } else {
-            
-
+            node.endingPoint.shortestCost = Math.min(node.endingPoint.shortestCost, currentCost);
+          }
         }
       }
     }
 
+// 出てきているコストの中で最小値のものを確定させる
+    int min = 0;
 
-    
+    for (Entry<Integer, Vertex> entry : vertexMap.entrySet()) {
+      Vertex value = entry.getValue();
+      if (value.confirmed == false) {
+        // 最小値のものを探す
+        min = Math.min(min, value.shortestCost);
+
+      }
+
+    }
+
+    System.out.println(min);
+    for (Entry<Integer, Vertex> entry : vertexMap.entrySet()) {
+      Vertex value = entry.getValue();
+      if (value.shortestCost == min) {
+        value.confirmed = true;
+
+      }
+    }
+
+    System.out.println("スタート地点は現時点で" + start.confirmed); // スタート地点のコストが0で確定されたか確認
+    System.out.println("地点1は現時点で" + vertexMap.get(1).confirmed);
+    System.out.println("地点0は現時点で" + vertexMap.get(0).confirmed);
 
 
 
 
-  }
+  }  
 
 
  
