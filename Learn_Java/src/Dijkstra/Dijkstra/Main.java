@@ -30,6 +30,11 @@ public class Main {
       }
     }
 
+      // Mapに格納されている頂点の数を確認
+    for (Integer key : vertexMap.keySet()) {
+      System.out.println(key + ":" + vertexMap.get(key));
+    }
+
 
     // edgeインスタンスを格納するリストを生成 ※最大値が分からないのでリスト
     List<Edge> edgeList = new ArrayList<>();
@@ -105,7 +110,6 @@ public class Main {
 
   //------------------------------------------------------------------
 
-
     currentVertex = confirmingVertex;
     currentCost = confirmingCost;
 
@@ -154,10 +158,8 @@ public class Main {
 
   //------------------------------------------------------------------
 
+
   }
-
-
-  
 
     
   // マップからVertexを取得するメソッド
