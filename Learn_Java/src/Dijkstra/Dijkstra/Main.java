@@ -10,7 +10,7 @@ public class Main {
 
     // ノードの情報をプログラムにあたえる
     
-    int[][] nodeDates = new int[][] {
+    int[][] edgeDates = new int[][] {
       {0, 1, 1}, {0, 2, 3}, {1, 0, 1}, {1, 2, 2}, {2, 0, 3}, {2, 1, 2}
     
     };
@@ -20,7 +20,7 @@ public class Main {
 
 
     // マップから既存のVertexオブジェクトを取得するか、新しいVertexオブジェクトを生成してマップに追加する
-    for (int[] data : nodeDates) {
+    for (int[] data : edgeDates) {
       int startingPoint = data[0];
      
       Vertex startingVertex = vertexMap.get(startingPoint);
@@ -31,15 +31,15 @@ public class Main {
     }
 
 
-    // Nodeインスタンスを格納するリストを生成 ※最大値が分からないのでリスト
-    List<Node> nodeList = new ArrayList<>();
+    // edgeインスタンスを格納するリストを生成 ※最大値が分からないのでリスト
+    List<Edge> edgeList = new ArrayList<>();
 
-    for (int[] data : nodeDates) {
+    for (int[] data : edgeDates) {
       Vertex startingPoint = getVertex(vertexMap, data[0]);
       Vertex endingPoint = getVertex(vertexMap, data[1]);
       int cost = data[2];
 
-      nodeList.add(new Node(startingPoint, endingPoint, cost));
+      edgeList.add(new Edge(startingPoint, endingPoint, cost));
 
     }
 
@@ -60,16 +60,16 @@ public class Main {
     Vertex currentVertex = start;
     int currentCost = start.shortestCost;
 
-    for (Node node : nodeList) {
+    for (Edge edge : edgeList) {
       int entryCost = currentCost;
-      if (node.startingPoint == currentVertex) {
-        if (node.endingPoint.confirmed == false) {
-          entryCost += node.cost;
-          if (node.endingPoint.shortestCost == Integer.MAX_VALUE) {
-            node.endingPoint.shortestCost = entryCost; 
+      if (edge.startingPoint == currentVertex) {
+        if (edge.endingPoint.confirmed == false) {
+          entryCost += edge.cost;
+          if (edge.endingPoint.shortestCost == Integer.MAX_VALUE) {
+            edge.endingPoint.shortestCost = entryCost; 
 
           } else {
-            node.endingPoint.shortestCost = Math.min(node.endingPoint.shortestCost, entryCost);
+            edge.endingPoint.shortestCost = Math.min(edge.endingPoint.shortestCost, entryCost);
           }
         }
       } 
@@ -109,16 +109,16 @@ public class Main {
     currentVertex = confirmingVertex;
     currentCost = confirmingCost;
 
-    for (Node node : nodeList) {
+    for (Edge edge : edgeList) {
       int entryCost = currentCost;
-      if (node.startingPoint == currentVertex) {
-        if (node.endingPoint.confirmed == false) {
-          entryCost += node.cost;
-          if (node.endingPoint.shortestCost == Integer.MAX_VALUE) {
-            node.endingPoint.shortestCost = entryCost; 
+      if (edge.startingPoint == currentVertex) {
+        if (edge.endingPoint.confirmed == false) {
+          entryCost += edge.cost;
+          if (edge.endingPoint.shortestCost == Integer.MAX_VALUE) {
+            edge.endingPoint.shortestCost = entryCost; 
 
           } else {
-            node.endingPoint.shortestCost = Math.min(node.endingPoint.shortestCost, entryCost);
+            edge.endingPoint.shortestCost = Math.min(edge.endingPoint.shortestCost, entryCost);
           }
         }
       } 
@@ -156,6 +156,8 @@ public class Main {
 
   }
 
+
+  
 
     
   // マップからVertexを取得するメソッド

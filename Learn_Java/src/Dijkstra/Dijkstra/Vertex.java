@@ -9,7 +9,6 @@ public class Vertex {
     this.shortestCost = Integer.MAX_VALUE;
   }
   
- 
 }
 
 

@@ -1,10 +1,13 @@
-package Dijkstra;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import Dijkstra.Edge;
+import Dijkstra.Vertex;
 
 public class Main2 {
   public static void main(String[]args) {
@@ -30,14 +33,14 @@ public class Main2 {
     }
 
     // Nodeのリストを生成
-    List<Node> nodeList = new ArrayList<>();
+    List<Edge> nodeList = new ArrayList<>();
     for (int i = 0; i < nodeDates.length; i++) {
         int startingPointId = nodeDates[i][0];
         int endingPointId = nodeDates[i][1];
         int cost = nodeDates[i][2];
         Vertex startingPoint = findVertex(vertexList, startingPointId);
         Vertex endingPoint = findVertex(vertexList, endingPointId);
-        nodeList.add(new Node(startingPoint, endingPoint, cost));
+        nodeList.add(new Edge(startingPoint, endingPoint, cost));
     }
 
       System.out.println("地点0は現時点で" + vertexList.get(0).confirmed);
