@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class Main {
   public static void main(String[]args) {
@@ -12,7 +11,7 @@ public class Main {
     // ノードの情報をプログラムにあたえる
     
     int[][] nodeDates = new int[][] {
-      {0, 1, 1}, {0, 2, 3}, {1, 0, 1}, {1, 2, 2}, {2, 0, 2}, {2, 1, 1}
+      {0, 1, 1}, {0, 2, 3}, {1, 0, 1}, {1, 2, 2}, {2, 0, 3}, {2, 1, 2}
     
     };
 
@@ -20,11 +19,10 @@ public class Main {
     Map<Integer, Vertex> vertexMap = new HashMap<>();
 
 
-
+    // マップから既存のVertexオブジェクトを取得するか、新しいVertexオブジェクトを生成してマップに追加する
     for (int[] data : nodeDates) {
       int startingPoint = data[0];
- 
-      // マップから既存のVertexオブジェクトを取得するか、新しいVertexオブジェクトを生成してマップに追加する
+     
       Vertex startingVertex = vertexMap.get(startingPoint);
       if (startingVertex == null) {
         startingVertex = new Vertex();
@@ -60,58 +58,106 @@ public class Main {
     
     // 現在地の情報をcurrentVertexに格納
     Vertex currentVertex = start;
-    int currentCost = 0;
+    int currentCost = start.shortestCost;
 
     for (Node node : nodeList) {
+      int entryCost = currentCost;
       if (node.startingPoint == currentVertex) {
         if (node.endingPoint.confirmed == false) {
-          currentCost += node.cost;
+          entryCost += node.cost;
           if (node.endingPoint.shortestCost == Integer.MAX_VALUE) {
-            node.endingPoint.shortestCost = currentCost; 
+            node.endingPoint.shortestCost = entryCost; 
 
           } else {
-            node.endingPoint.shortestCost = Math.min(node.endingPoint.shortestCost, currentCost);
+            node.endingPoint.shortestCost = Math.min(node.endingPoint.shortestCost, entryCost);
           }
         }
       } 
     }
 
-    System.out.println("地点0の最短コストは" + getVertex(vertexMap, 0).shortestCost);
-    System.out.println("地点1の最短コストは" + getVertex(vertexMap, 1).shortestCost);
-    System.out.println("地点2の最短コストは" + getVertex(vertexMap, 2).shortestCost);
+    System.out.println("地点0の最短コストは3?" + getVertex(vertexMap, 0).shortestCost);
+    System.out.println("地点1の最短コストは2?" + getVertex(vertexMap, 1).shortestCost);
+    System.out.println("地点2の最短コストは0?" + getVertex(vertexMap, 2).shortestCost);
 
 
 // 出てきているコストの中で最小値のものを確定させる
-    int min = Integer.MAX_VALUE;
+    int confirmingCost = Integer.MAX_VALUE;
+    Vertex confirmingVertex = currentVertex;
+    for (Vertex mapValue : vertexMap.values()) {
 
-    for (Entry<Integer, Vertex> entry : vertexMap.entrySet()) {
-      Vertex value = entry.getValue();
-      if (value.confirmed == false) {
+     if (mapValue.confirmed == false) {
         // 最小値のものを探す
-        min = Math.min(min, value.shortestCost);
+        confirmingCost = Math.min(confirmingCost, mapValue.shortestCost);
+        if (confirmingCost == mapValue.shortestCost) {
+          confirmingVertex = mapValue;
+        }
 
       }
 
     }
 
-    System.out.println(min);
-    for (Entry<Integer, Vertex> entry : vertexMap.entrySet()) {
-      Vertex value = entry.getValue();
-      if (value.shortestCost == min) {
-        value.confirmed = true;
 
-      }
+    confirmingVertex.confirmed = true;
+
+    System.out.println("スタート地点は現時点で" + start.confirmed + start.shortestCost); // スタート地点のコストが0で確定されたか確認
+    System.out.println("地点1は現時点で" + getVertex(vertexMap,1).confirmed + getVertex(vertexMap,1).shortestCost);
+    System.out.println("地点0は現時点で" + getVertex(vertexMap,0).confirmed + getVertex(vertexMap,0).shortestCost);
+
+  //------------------------------------------------------------------
+
+
+    currentVertex = confirmingVertex;
+    currentCost = confirmingCost;
+
+    for (Node node : nodeList) {
+      int entryCost = currentCost;
+      if (node.startingPoint == currentVertex) {
+        if (node.endingPoint.confirmed == false) {
+          entryCost += node.cost;
+          if (node.endingPoint.shortestCost == Integer.MAX_VALUE) {
+            node.endingPoint.shortestCost = entryCost; 
+
+          } else {
+            node.endingPoint.shortestCost = Math.min(node.endingPoint.shortestCost, entryCost);
+          }
+        }
+      } 
     }
 
-    System.out.println("スタート地点は現時点で" + start.confirmed); // スタート地点のコストが0で確定されたか確認
-    System.out.println("地点1は現時点で" + vertexMap.get(1).confirmed);
-    System.out.println("地点0は現時点で" + vertexMap.get(0).confirmed);
+    System.out.println("地点0の最短コストは3?" + getVertex(vertexMap, 0).shortestCost);
+    System.out.println("地点1の最短コストは2?" + getVertex(vertexMap, 1).shortestCost);
+    System.out.println("地点2の最短コストは0?" + getVertex(vertexMap, 2).shortestCost);
 
 
+// 出てきているコストの中で最小値のものを確定させる
+    confirmingCost = Integer.MAX_VALUE;
+    confirmingVertex = currentVertex;
+    for (Vertex mapValue : vertexMap.values()) {
 
+     if (mapValue.confirmed == false) {
+        // 最小値のものを探す
+        confirmingCost = Math.min(confirmingCost, mapValue.shortestCost);
+        if (confirmingCost == mapValue.shortestCost) {
+          confirmingVertex = mapValue;
+        }
+
+      }
+
+    }
+
+
+    confirmingVertex.confirmed = true;
+
+    System.out.println("スタート地点は現時点で" + start.confirmed + start.shortestCost); // スタート地点のコストが0で確定されたか確認
+    System.out.println("地点1は現時点で" + getVertex(vertexMap,1).confirmed + getVertex(vertexMap,1).shortestCost);
+    System.out.println("地点0は現時点で" + getVertex(vertexMap,0).confirmed + getVertex(vertexMap,0).shortestCost);
+
+  //------------------------------------------------------------------
 
   }
-  
+
+
+    
   // マップからVertexを取得するメソッド
   private static Vertex getVertex(Map<Integer,Vertex> vertexMap,int vertex) {  
 
