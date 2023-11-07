@@ -128,6 +128,8 @@ public class Main {
       } 
     }
 
+    System.out.println("スタート地点の最短コストは0?" + start.shortestCost);
+
     System.out.println("地点0の最短コストは3?" + getVertex(vertexMap, 0).shortestCost);
     System.out.println("地点1の最短コストは2?" + getVertex(vertexMap, 1).shortestCost);
     System.out.println("地点2の最短コストは0?" + getVertex(vertexMap, 2).shortestCost);
