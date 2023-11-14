@@ -1,0 +1,19 @@
+<%@ page import="java.util.List" %>
+<%@ page import="your.package.YourDataClass" %>
+
+<%
+    // サーブレットやJavaビーンから取得したデータ
+    List<YourDataClass> dataList = (List<YourDataClass>) request.getAttribute("dataList");
+    String selectedValue = (String) request.getAttribute("selectedValue");
+%>
+
+<form action="your_servlet_url" method="post">
+    <c:forEach var="data" items="${dataList}">
+        <input type="radio" name="yourRadioGroup" value="${data.value}"
+               ${data.value eq selectedValue ? 'checked' : ''}>
+        ${data.label}<br>
+    </c:forEach>
+    <input type="submit" value="Submit">
+</form>
+
+tymereaf

@@ -14,6 +14,11 @@ public class Dog {
   * 鳴きます
   *インスタンス変数は自身のクラスのインスタンス変数をthis.～で利用できる
   */
+
+  public void set() {
+    name = "新しい名前";
+  }
+
   public void cry(){
     System.out.print(this.name + "「");
     for(int i = 0; i < this.cryCount; i ++) {

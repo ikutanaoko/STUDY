@@ -12,7 +12,6 @@ public class Animal {
   public static void main(String[]args){
    //インスタンスを作成
    Dog dog1 = new Dog();
-   dog1.name = "ポチ";
    dog1.cryCount = 2;
 
    Dog dog2 = new Dog();
@@ -23,6 +22,10 @@ public class Animal {
    cat1.cryCount = 3;
 
    //犬のインスタンスメソッドを実行
+   System.out.println(dog1.name);
+   dog1.set();
+
+   System.out.println(dog1.name);
    dog1.cry();
    dog1.sitDown();
    dog2.cry();
