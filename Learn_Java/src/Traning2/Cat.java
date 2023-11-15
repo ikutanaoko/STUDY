@@ -4,6 +4,17 @@ package Traning2;
  */
  public class Cat {
 
+  public Cat() {
+    System.out.println("何もないコンストラクタ発動");
+
+  }
+
+  public Cat(int num) {
+
+    System.out.println("引数有りで発動");
+  }
+
+
   //名前
   private String name = "名無しの猫";
   //鳴く回数
