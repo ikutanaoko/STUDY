@@ -61,6 +61,31 @@ function updatePostList(postList, formId) {
   // ここでは簡略化のため未実装
 }
 
+// 特定の要素を更新するJavaScript
+function updatePostList(postList, formId) {
+  // 投稿一覧を表示する部分のIDを指定して更新
+  var postListContainer = $("#postList" + formId);
+  
+  // 一旦クリア
+  postListContainer.empty();
+
+  // 投稿一覧を再描画するロジックを実装
+  if (postList.length === 0) {
+      postListContainer.append("<p>No posts yet.</p>");
+  } else {
+      var ul = $("<ul>");
+
+      // 投稿一覧をリストアイテムに追加
+      for (var i = 0; i < postList.length; i++) {
+          var post = postList[i];
+          var li = $("<li>").text(post.content);
+          ul.append(li);
+      }
+
+      postListContainer.append(ul);
+  }
+}
+
 
 
 
