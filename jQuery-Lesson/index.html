@@ -9,14 +9,57 @@
   <h1>childrenサンプル</h1>
   <button>クリック</button>
   <h3>リスト</h3>
-  <ul>
-    <li>Home</li>
-    <li>concept</li>
-    <li>Producys</li>
-    <li>Access</li>
-  </ul>
+
+  <div id="container">
+
+    <ul>
+
+      <li>Home</li>
+      <li>concept</li>
+      <li>Producys</li>
+      <li>Access</li>
+
+    </ul>
+
+ </div>
   <script src="jquery.min.js"></script>
-  <script src="app.js"></script>
+
+  <script>
+
+    $('button').on('click',function(){
+
+      const container = $("#container");
+      container.empty();
+
+      var list = ["りんご","ごりら","みかん"];
+  
+      var ul = $("<ul>"); 
+
+      for (var i = 0; i < list.length; i++) {
+
+        var hoge = list[i];
+
+        console.log(hoge);
+
+        var li = $("<li>").text(hoge);
+        
+        ul.append($("<li>").text(hoge));
+
+      };
+  
+      container.append(ul);
+  
+    });  
+
+  </script>
+
+
+
+
+
+
+  
+  <!-- <script src="app.js"></script> -->
   
 </body>
 </html>

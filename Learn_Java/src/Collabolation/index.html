@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collaborative Editor</title>
+</head>
+<body>
+
+    <h1>Collaborative Editor</h1>
+
+    <textarea id="editor" rows="10" cols="50"></textarea>
+
+    <script>
+        // ランダムなuserIdを生成（実際のアプリケーションではユーザーの認証後に適切なユーザーIDを取得する）
+        var userId = "user" + Math.floor(Math.random() * 1000);
+
+        var socket = new WebSocket("ws://localhost:8080/your-web-app/CollaborativeEditorSocket");
+
+        document.getElementById("editor").addEventListener("input", function () {
+            var editedText = document.getElementById("editor").value;
+            var data = "userId=" + userId + "&editedText=" + editedText;
+            sendToServer(data);
+        });
+
+        socket.onmessage = function (event) {
+            var message = event.data;
+            updateEditor(message);
+        };
+
+        function sendToServer(data) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "CollaborativeEditorServlet", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send(data);
+        }
+
+        function updateEditor(message) {
+            var parts = message.split(",");
+            var senderId = parts[0];
+            var editedText = parts[1];
+
+            // 他のユーザーが文字を削除した場合、エディタを更新
+            document.getElementById("editor").value = editedText;
+        }
+    </script>
+
+</body>
+</html>
