@@ -43,6 +43,62 @@
             document.getElementById("editor").value = editedText;
         }
     </script>
+    var socket = new WebSocket('ws://your-websocket-server');
+
+    // ウェブソケットがオープンしたときの処理
+    socket.onopen = function(event) {
+        console.log('WebSocket opened');
+    };
+    
+    // ウェブソケットがメッセージを受信したときの処理
+    socket.onmessage = function(event) {
+        var receivedData = event.data;
+        
+        // テキストエリアに反映
+        updateTextareaWithListData(receivedData);
+    
+        // 他のクライアントに通知
+        notifyOtherClients(receivedData);
+    };
+    
+    // リストの要素がクリックされたときの処理
+    $(document).on("click", "#sampleList li", function() {
+        var selectedItemContent = $(this).data('content');
+    
+        // ウェブソケットを介して他のクライアントにデータを送信
+        socket.send(selectedItemContent);
+    
+        // テキストエリアに反映
+        updateTextareaWithListData(selectedItemContent);
+    
+        // 他のクライアントに通知
+        notifyOtherClients(selectedItemContent);
+    });
+    
+    // テキストエリアを更新する関数
+    function updateTextareaWithListData(listData) {
+        var textarea = $("#sharedTextarea");
+        textarea.val(listData);
+    }
+    
+    // 他のクライアントに通知する関数
+    function notifyOtherClients(data) {
+        // ここで適切な処理を行い、改行を含むデータを送信
+        // 例えば、サーバーサイドで改行を適切に処理して他のクライアントにブロードキャストする
+        console.log("他のクライアントに通知: " + data);
+    }
+
+// テキストエリアを更新する関数
+function updateTextareaWithListData(listData) {
+    var textarea = $("#sharedTextarea");
+    textarea.val(listData);
+}
+
+// 別のデータを更新する関数
+function updateOtherData(data) {
+    // ここで他のデータを適切に更新する処理を行う
+    console.log("他のデータを更新: " + data);
+}
 
 </body>
 </html>
