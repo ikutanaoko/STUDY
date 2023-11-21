@@ -86,6 +86,15 @@ public class CollaborativeEditorServlet extends HttpServlet {
 
             return mergedText;
         }
+
+        response.sendRedirect(request.getContextPath() + "/index.jsp?error=login_required");
+
     }
+    <%
+    String errorMessage = request.getParameter("error");
+    if ("login_required".equals(errorMessage)) {
+        out.println("<p style=\"color: red;\">Login is required to access this page.</p>");
+    }
+%>
 }
 
